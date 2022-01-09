@@ -64,8 +64,8 @@ with open(file_to_load) as election_data:
             winning_percentage = vote_percentage
             winning_candidate = candidate_name
 
-    #Winning Candidate Summary
-    winning_candidate_summary = (
+        #Winning Candidate Summary
+        winning_candidate_summary = (
         f"-------------------------\n"
         f"Winner: {winning_candidate}\n"
         f"Winning Vote Count: {winning_count:,}\n"
