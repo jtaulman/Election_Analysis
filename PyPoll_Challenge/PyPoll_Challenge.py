@@ -16,8 +16,6 @@ candidate_options = []
 candidate_votes = {}
 
 # 1: Create a county list and county votes dictionary.
-#county_options = ["Arapahoe", "Denver", "Jefferson"]
-#county_votes = {'Arapahoe': "", 'Denver': "", 'Jefferson': ""}
 county_options = []
 county_votes = {}
 
