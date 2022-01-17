@@ -15,10 +15,10 @@ candidate_options = []
 candidate_votes = {}
 
 # 1: Create a county list and county votes dictionary.
-county_options = ["Arapahoe", "Denver", "Jefferson"]
-county_votes = {'Arapahoe': "", 'Denver': "", 'Jefferson': ""}
-
-
+#county_options = ["Arapahoe", "Denver", "Jefferson"]
+#county_votes = {'Arapahoe': "", 'Denver': "", 'Jefferson': ""}
+county_options = []
+county_votes = {}
 # Track the winning candidate, vote count and percentage
 winning_candidate = ""
 winning_count = 0
@@ -26,7 +26,7 @@ winning_percentage = 0
 
 # 2: Track the largest county and county voter turnout.
 winning_county = ""
-winning_votes = ""
+winning_votes = 0
 
 
 # Read the csv and convert it into a list of dictionaries
@@ -97,20 +97,19 @@ with open(file_to_save, "w") as txt_file:
         county_vote = county_votes[county]
         # 6c: Calculate the percentage of votes for the county.
         #votes_percentage = float(vote) / float(total_votes) * 100
-        county_percent = float(county_votes) / float(total_votes) * 100
+        county_percent = float(county_vote) / float(total_votes) * 100
          # 6d: Print the county results to the terminal.
         county_results = (
-        #    f"{county_name}: {votes_percentage:.1f}% ({vote:,})\n")
             f"{county_name}: {county_percent:.1f}% ({county_vote:,})\n")
         # 6e: Save the county votes to a text file.
-        #print(county_results)
+        print(county_results)
         #txt_file.write(county_results)
          
         # 6f: Write an if statement to determine the winning county and get its vote count.
-        if (votes2 > winning_votes) and (vote_percentage2 > winning_percentage):
-            winning_count = votes2
-            winning_percentage = vote_percentage2
-            winning_county = county_name
+        if (county_vote > winning_votes) and (county_percent > winning_percentage):
+            winning_count = county_vote
+            winning_percentage = county_percent
+            winning_county = county
 
     # 7: Print the county with the largest turnout to the terminal.
     
