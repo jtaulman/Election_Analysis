@@ -19,6 +19,7 @@ candidate_votes = {}
 #county_votes = {'Arapahoe': "", 'Denver': "", 'Jefferson': ""}
 county_options = []
 county_votes = {}
+
 # Track the winning candidate, vote count and percentage
 winning_candidate = ""
 winning_count = 0
@@ -40,7 +41,7 @@ with open(file_to_load) as election_data:
     for row in reader:
 
         # Add to the total vote count
-        total_votes = total_votes + 1
+        total_votes += 1
 
         # Get the candidate name from each row.
         candidate_name = row[2]
@@ -72,7 +73,7 @@ with open(file_to_load) as election_data:
             county_votes[county_name] = 0
 
         # 5: Add a vote to that county's vote count.
-            county_votes[county_name] += 1
+        county_votes[county_name] += 1
 
 
 # Save the results to our text file.
@@ -94,25 +95,25 @@ with open(file_to_save, "w") as txt_file:
     for county in county_votes: 
         # 6b: Retrieve the county vote count.
         #vote = county_votes[county_name]
-        county_vote = county_votes[county]
+        county_count = county_votes[county_name]
         # 6c: Calculate the percentage of votes for the county.
         #votes_percentage = float(vote) / float(total_votes) * 100
-        county_percent = float(county_vote) / float(total_votes) * 100
+        county_percent = float(county_count) / float(total_votes) * 100
          # 6d: Print the county results to the terminal.
         county_results = (
-            f"{county_name}: {county_percent:.1f}% ({county_vote:,})\n")
+            f"{county}: {county_percent:.1f}% ({county_count:,})\n")
         # 6e: Save the county votes to a text file.
         print(county_results)
-        #txt_file.write(county_results)
+        txt_file.write(county_results)
          
         # 6f: Write an if statement to determine the winning county and get its vote count.
-        if (county_vote > winning_votes) and (county_percent > winning_percentage):
-            winning_count = county_vote
+        if (county_count > winning_votes) and (county_percent > winning_percentage):
+            winning_count = county_count
             winning_percentage = county_percent
             winning_county = county
 
     # 7: Print the county with the largest turnout to the terminal.
-    
+    #print(Largest_County_Turnout)
 
     # 8: Save the county with the largest turnout to a text file.
     #print(Largest_County_Turnout)
